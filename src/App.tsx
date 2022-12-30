@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { QueryKey, useQuery } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { CharacterResponse, getData } from "./api";
 import PagedCharacters from "./PagedCharacters";
+import PageButtons from "./Buttons";
+import "./App.css";
 
 function App() {
   const [page, setPage] = useState(1);
@@ -10,21 +9,7 @@ function App() {
 
   return (
     <div>
-      <div>
-        <button
-          disabled={page <= 1}
-          onClick={() => setPage((prev) => prev - 1)}
-        >
-          Previous
-        </button>
-
-        <span>Page: {page}</span>
-
-        <button disabled={!hasNext} onClick={() => setPage((prev) => prev + 1)}>
-          Next
-        </button>
-      </div>
-
+      <PageButtons hasNext={hasNext} page={page} setPage={setPage} />
       <PagedCharacters page={page} setHasNext={setHasNext} />
     </div>
   );
