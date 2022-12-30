@@ -1,9 +1,9 @@
-import { useState } from "react";
-import PagedCharacters from "./PagedCharacters";
-import PageButtons from "./Buttons";
-import "./App.css";
+import { useState } from 'react';
+import PagedCharacters from './PagedCharacters';
+import PageButtons from './Buttons';
+import './App.css';
 
-function App() {
+const App: React.FC = () => {
   const [page, setPage] = useState(1);
   const [hasNext, setHasNext] = useState<boolean>();
 
@@ -13,6 +13,6 @@ function App() {
       <PagedCharacters page={page} setHasNext={setHasNext} />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,7 +1,7 @@
-import { QueryKey, useQuery } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { useEffect } from "react";
-import { CharacterResponse, getData } from "./api";
+import { QueryKey, useQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+import { useEffect } from 'react';
+import { CharacterResponse, getData } from './api';
 
 type PropsPagedCharacters = {
   page: number;
@@ -15,7 +15,7 @@ const PagedCharacters: React.FC<PropsPagedCharacters> = ({
   page,
   setHasNext,
 }) => {
-  const queryKey: QueryKey = ["characters", page];
+  const queryKey: QueryKey = ['characters', page];
 
   const { status, error, data } = useQuery<CharacterResponse, AxiosError>({
     queryKey,
@@ -27,14 +27,14 @@ const PagedCharacters: React.FC<PropsPagedCharacters> = ({
    */
   useEffect(() => {
     setHasNext(data?.next ? true : false);
-  }, [data]);
+  }, [data, setHasNext]);
 
-  if (status === "loading") {
+  if (status === 'loading') {
     return <div>Loading...</div>;
   }
 
-  if (status === "error") {
-    return <div>{error!.message}</div>;
+  if (status === 'error') {
+    return <div>{error.message}</div>;
   }
 
   return (
